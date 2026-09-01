@@ -24,8 +24,35 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "About Us — Biddyasetu",
-  description: "Learn about Biddyasetu — its history, mission, vision, and core values. A non-profit alumni organization of Adarsha High School, Kaitola.",
+  title: "About Biddyasetu — Our Mission, Vision & History | Adarsha High School Alumni",
+  description:
+    "Learn the story of Biddyasetu (বিদ্যাসেতু) — a non-profit, non-political alumni organization of Adarsha High School, Kaitola, established on 17 February 2026. Discover our mission, vision, core values, and founding journey.",
+
+  keywords: [
+    "About Biddyasetu", "Biddyasetu history", "Adarsha High School alumni",
+    "Kaitola alumni organization", "non-profit Bangladesh", "alumni mission vision",
+    "school alumni values", "educational welfare Bangladesh",
+  ],
+
+  alternates: {
+    canonical: "https://biddyasetu.org/about",
+  },
+
+  openGraph: {
+    title: "About Biddyasetu — Our Mission, Vision & History",
+    description:
+      "Established 17 February 2026, Biddyasetu bridges education and community for alumni of Adarsha High School, Kaitola across Bangladesh and abroad.",
+    url: "https://biddyasetu.org/about",
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "About Biddyasetu" }],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "About Biddyasetu — Our Mission, Vision & History",
+    description: "Established 17 February 2026 — A non-profit alumni organization of Adarsha High School, Kaitola.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 const iconMap = {

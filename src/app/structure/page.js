@@ -2,8 +2,35 @@ import { committeeRoles, executiveMembers, batchRepresentatives } from "@/lib/da
 import { Users, Crown, Shield, Star, Award, GraduationCap } from "lucide-react";
 
 export const metadata = {
-  title: "Organization Structure — Biddyasetu",
-  description: "View the executive committee, members, and batch representatives of Biddyasetu alumni organization.",
+  title: "Organization Structure — Committee, Leadership & Batch Reps | Biddyasetu",
+  description:
+    "Explore the full governing structure of Biddyasetu: Executive Leadership, Secretariat, Executive Members, and Batch Representatives from SSC batches of Adarsha High School, Kaitola.",
+
+  keywords: [
+    "Biddyasetu committee", "alumni organization structure", "executive committee Bangladesh",
+    "school alumni leadership", "Adarsha High School committee", "batch representatives",
+    "Biddyasetu secretariat", "alumni organization Bangladesh",
+  ],
+
+  alternates: {
+    canonical: "https://biddyasetu.org/structure",
+  },
+
+  openGraph: {
+    title: "Organization Structure — Biddyasetu Committee & Leadership",
+    description:
+      "Meet the Executive Committee, Secretariat, and Batch Representatives of Biddyasetu — the alumni organization of Adarsha High School, Kaitola.",
+    url: "https://biddyasetu.org/structure",
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Biddyasetu Organization Structure" }],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Biddyasetu — Organization Structure & Leadership",
+    description: "Executive committee, secretaries, members, and batch representatives of Biddyasetu alumni organization.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 function Avatar({ name, size = 56 }) {
