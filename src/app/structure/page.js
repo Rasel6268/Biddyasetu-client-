@@ -12,20 +12,12 @@ function Avatar({ name, size = 56 }) {
   const initials = name.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();
   return (
     <div
+      className="rounded-full flex items-center justify-center text-white font-extrabold shrink-0 border-2 border-white shadow-md"
       style={{
         width: size,
         height: size,
-        borderRadius: "50%",
         background: `linear-gradient(135deg, ${colors[idx]}cc, ${colors[idx]})`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "white",
-        fontWeight: 800,
         fontSize: size * 0.32,
-        flexShrink: 0,
-        boxShadow: `0 4px 12px ${colors[idx]}30`,
-        border: "2px solid #ffffff",
       }}
     >
       {initials}
@@ -34,122 +26,67 @@ function Avatar({ name, size = 56 }) {
 }
 
 export default function StructurePage() {
-  // Split into key leadership and secretaries
   const leadership = committeeRoles.slice(0, 6);
   const secretaries = committeeRoles.slice(6);
 
   return (
     <>
       {/* Hero Banner */}
-      <section
-        style={{
-          background: "linear-gradient(135deg, #0284c7 0%, #06A3EC 50%, #38bdf8 100%)",
-          padding: "4.5rem 1.5rem 3.5rem",
-          textAlign: "center",
-          color: "white",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <section className="relative bg-gradient-to-br from-sky-700 via-sky-500 to-sky-400 text-white py-16 sm:py-20 px-4 text-center overflow-hidden">
         <div
+          className="absolute inset-0 opacity-40 pointer-events-none"
           style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.12) 0%, transparent 40%), radial-gradient(circle at 80% 20%, rgba(250,228,6,0.15) 0%, transparent 40%)",
-            pointerEvents: "none",
+            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
           }}
         />
-        <div style={{ maxWidth: "720px", margin: "0 auto", position: "relative", zIndex: 2 }}>
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.4rem",
-              padding: "0.35rem 1rem",
-              borderRadius: "9999px",
-              background: "rgba(255, 255, 255, 0.16)",
-              border: "1px solid rgba(255, 255, 255, 0.3)",
-              fontSize: "0.8125rem",
-              fontWeight: 600,
-              marginBottom: "1rem",
-              backdropFilter: "blur(6px)",
-            }}
-          >
-            <Crown size={14} color="#fde047" /> Governing Body & Representatives
+        <div className="max-w-4xl mx-auto relative z-10">
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/15 border border-white/30 text-xs sm:text-sm font-semibold mb-4 backdrop-blur-md">
+            <Crown className="w-4 h-4 text-yellow-300" /> Governing Body & Representatives
           </span>
-          <h1 style={{ fontSize: "clamp(2.25rem, 5vw, 3.25rem)", fontWeight: 900, marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-3 tracking-tight">
             Organization Structure
           </h1>
-          <p style={{ fontSize: "1.0625rem", opacity: 0.92, lineHeight: 1.6 }}>
-            Meet the dedicated leadership team, secretariat, executive members, and batch liaisons steering Biddyasetu.
+          <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto font-medium">
+            Meet the leadership team, secretariat, executive members, and batch liaisons driving Biddyasetu.
           </p>
         </div>
       </section>
 
       {/* 1. Executive Leadership */}
-      <section className="section-padding" style={{ background: "var(--surface)" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="badge badge-primary" style={{ marginBottom: "0.75rem" }}>
-              <Crown size={12} /> Key Leadership
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-100 border border-sky-200 text-sky-700 font-bold text-xs mb-3">
+              <Crown className="w-3.5 h-3.5" /> Key Leadership
             </span>
-            <h2 className="section-heading">Executive Leadership</h2>
-            <p className="section-subheading" style={{ margin: "0.5rem auto 0" }}>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Executive Leadership
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-xl mx-auto">
               The core leadership team responsible for governance and strategic direction.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1.25rem" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {leadership.map((member) => (
               <div
                 key={member.role}
-                className="card interactive-card"
-                style={{
-                  padding: "1.35rem 1.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1.25rem",
-                  borderLeft: "4px solid var(--primary)",
-                  borderRadius: "1rem",
-                  border: "1.5px solid var(--border)",
-                  borderLeftWidth: "4px",
-                  borderLeftColor: "var(--primary)",
-                }}
+                className="p-5 rounded-2xl bg-white border border-slate-200/80 border-l-4 border-l-sky-500 shadow-sm hover:shadow-xl hover:border-sky-400 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4"
               >
                 {/* Left Side: Avatar */}
                 <Avatar name={member.name} size={64} />
 
                 {/* Right Side: Information */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      padding: "0.2rem 0.65rem",
-                      borderRadius: "9999px",
-                      background: "rgba(6,163,236,0.1)",
-                      color: "var(--primary-dark)",
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      marginBottom: "0.35rem",
-                    }}
-                  >
+                <div className="flex-1 min-w-0">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 font-bold text-xs mb-1.5">
                     {member.role}
                   </span>
-                  <h3
-                    style={{
-                      fontWeight: 800,
-                      fontSize: "1.0625rem",
-                      color: "var(--text)",
-                      margin: "0 0 0.25rem",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
+                  <h3 className="font-black text-base sm:text-lg text-slate-900 truncate">
                     {member.name}
                   </h3>
-                  <p style={{ fontSize: "0.8125rem", color: "var(--text-muted)", margin: 0, display: "flex", alignItems: "center", gap: "0.35rem", fontWeight: 500 }}>
-                    <GraduationCap size={13} color="var(--primary)" /> Batch: {member.batch}
+                  <p className="text-xs sm:text-sm text-slate-500 font-semibold flex items-center gap-1 mt-0.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-sky-500" /> Batch: {member.batch}
                   </p>
                 </div>
               </div>
@@ -159,65 +96,34 @@ export default function StructurePage() {
       </section>
 
       {/* 2. Committee Secretaries */}
-      <section className="section-padding" style={{ background: "var(--background)" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="badge badge-primary" style={{ marginBottom: "0.75rem" }}>
-              <Shield size={12} /> Secretariat
+      <section className="py-16 sm:py-20 bg-[#FDF9DF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-100 border border-sky-200 text-sky-700 font-bold text-xs mb-3">
+              <Shield className="w-3.5 h-3.5" /> Secretariat
             </span>
-            <h2 className="section-heading">Secretaries & Department Leads</h2>
-            <p className="section-subheading" style={{ margin: "0.5rem auto 0" }}>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Secretaries & Department Leads
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-xl mx-auto">
               Departmental secretaries executing education, social welfare, culture, and communication programs.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1.15rem" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {secretaries.map((member) => (
               <div
                 key={member.role}
-                className="card interactive-card-sm"
-                style={{
-                  padding: "1.25rem 1.35rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1.15rem",
-                  borderRadius: "0.875rem",
-                  border: "1.5px solid var(--border)",
-                }}
+                className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-sky-400 hover:-translate-y-0.5 transition-all flex items-center gap-3.5"
               >
-                {/* Left Side: Avatar */}
-                <Avatar name={member.name} size={52} />
-
-                {/* Right Side: Information */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      color: "var(--primary)",
-                      marginBottom: "0.2rem",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {member.role}
-                  </div>
-                  <h3
-                    style={{
-                      fontWeight: 700,
-                      fontSize: "0.95rem",
-                      color: "var(--text)",
-                      margin: "0 0 0.2rem",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
+                <Avatar name={member.name} size={50} />
+                <div className="flex-1 min-w-0">
+                  <div className="text-xs font-bold text-sky-600 truncate">{member.role}</div>
+                  <h3 className="font-extrabold text-sm sm:text-base text-slate-900 truncate">
                     {member.name}
                   </h3>
-                  <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                    <GraduationCap size={12} /> Batch: {member.batch}
+                  <div className="text-xs text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                    <GraduationCap className="w-3 h-3" /> Batch: {member.batch}
                   </div>
                 </div>
               </div>
@@ -227,56 +133,34 @@ export default function StructurePage() {
       </section>
 
       {/* 3. Executive Members */}
-      <section className="section-padding" style={{ background: "var(--surface)" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="badge badge-secondary" style={{ marginBottom: "0.75rem" }}>
-              <Users size={12} /> Executive Committee
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-800 font-bold text-xs mb-3">
+              <Users className="w-3.5 h-3.5" /> Executive Committee
             </span>
-            <h2 className="section-heading">Executive Members</h2>
-            <p className="section-subheading" style={{ margin: "0.5rem auto 0" }}>
-              Active committee members participating in decision-making and field initiatives.
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Executive Members
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-xl mx-auto">
+              Active committee members participating in community decisions and welfare initiatives.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.15rem" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {executiveMembers.map((m) => (
               <div
                 key={m.name}
-                className="card interactive-card-sm"
-                style={{
-                  padding: "1.15rem 1.25rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1.1rem",
-                  borderRadius: "0.875rem",
-                  border: "1.5px solid var(--border)",
-                }}
+                className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:shadow-md hover:border-sky-300 transition-all flex items-center gap-3"
               >
-                {/* Left Side: Avatar */}
-                <Avatar name={m.name} size={50} />
-
-                {/* Right Side: Information */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      padding: "0.15rem 0.5rem",
-                      borderRadius: "9999px",
-                      background: "rgba(250,228,6,0.15)",
-                      color: "#854d0e",
-                      fontSize: "0.68rem",
-                      fontWeight: 700,
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    Executive Member
+                <Avatar name={m.name} size={46} />
+                <div className="flex-1 min-w-0">
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold text-[10px] mb-0.5">
+                    Executive
                   </span>
-                  <h3 style={{ fontWeight: 700, fontSize: "0.925rem", color: "var(--text)", margin: "0 0 0.2rem" }}>
-                    {m.name}
-                  </h3>
-                  <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                    <GraduationCap size={12} /> Batch: {m.batch}
+                  <h3 className="font-extrabold text-sm text-slate-900 truncate">{m.name}</h3>
+                  <div className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                    <GraduationCap className="w-3 h-3" /> Batch: {m.batch}
                   </div>
                 </div>
               </div>
@@ -286,53 +170,31 @@ export default function StructurePage() {
       </section>
 
       {/* 4. Batch Representatives */}
-      <section className="section-padding" style={{ background: "var(--background)" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <span className="badge badge-primary" style={{ marginBottom: "0.75rem" }}>
-              <Star size={12} fill="var(--primary)" /> Batch Liaisons
+      <section className="py-16 sm:py-20 bg-[#FDF9DF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-100 border border-sky-200 text-sky-700 font-bold text-xs mb-3">
+              <Star className="w-3.5 h-3.5 fill-sky-500 text-sky-500" /> Batch Liaisons
             </span>
-            <h2 className="section-heading">Batch Representatives</h2>
-            <p className="section-subheading" style={{ margin: "0.5rem auto 0" }}>
-              Dedicated alumni liaisons coordinating communications and gathering batch feedback.
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Batch Representatives
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-xl mx-auto">
+              Dedicated alumni representatives coordinating communications and connecting batchmates.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: "1.15rem" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {batchRepresentatives.map((rep) => (
               <div
                 key={rep.batch}
-                className="card interactive-card-sm"
-                style={{
-                  padding: "1.15rem 1.25rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1.15rem",
-                  borderRadius: "0.875rem",
-                  border: "1.5px solid var(--border)",
-                }}
+                className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:shadow-md hover:border-sky-300 transition-all flex items-center gap-3.5"
               >
-                {/* Left Side: Avatar */}
-                <Avatar name={rep.name} size={50} />
-
-                {/* Right Side: Information */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
-                      fontWeight: 800,
-                      color: "var(--primary)",
-                      fontSize: "0.8rem",
-                      marginBottom: "0.2rem",
-                    }}
-                  >
-                    {rep.batch}
-                  </div>
-                  <h3 style={{ fontWeight: 700, fontSize: "0.925rem", color: "var(--text)", margin: "0 0 0.2rem" }}>
-                    {rep.name}
-                  </h3>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                    <Award size={12} /> Batch Representative
-                  </div>
+                <Avatar name={rep.name} size={48} />
+                <div className="flex-1 min-w-0">
+                  <div className="font-black text-sky-600 text-xs">{rep.batch}</div>
+                  <h3 className="font-extrabold text-sm text-slate-900 truncate">{rep.name}</h3>
+                  <div className="text-xs text-slate-400 font-medium">Batch Representative</div>
                 </div>
               </div>
             ))}

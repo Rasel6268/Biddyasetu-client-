@@ -48,223 +48,125 @@ export default function MemberModal({ member, onClose }) {
 
   return (
     <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "1rem",
-        backgroundColor: "rgba(15, 23, 42, 0.65)",
-        backdropFilter: "blur(6px)",
-        animation: "fadeIn 0.2s ease-out",
-      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/65 backdrop-blur-sm animate-fadeIn"
       onClick={onClose}
     >
       <div
-        style={{
-          background: "#ffffff",
-          borderRadius: "1.25rem",
-          maxWidth: "600px",
-          width: "100%",
-          maxHeight: "90vh",
-          overflowY: "auto",
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-          position: "relative",
-          border: "1px solid var(--border)",
-        }}
+        className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Cover Banner */}
-        <div
-          style={{
-            height: "120px",
-            background: "linear-gradient(135deg, #0369a1 0%, #06A3EC 60%, #9BD6E4 100%)",
-            position: "relative",
-            borderTopLeftRadius: "1.25rem",
-            borderTopRightRadius: "1.25rem",
-          }}
-        >
+        {/* Cover Header */}
+        <div className="h-32 bg-gradient-to-r from-sky-700 via-sky-500 to-sky-400 rounded-t-3xl relative p-4 flex justify-end">
           <button
             onClick={onClose}
             aria-label="Close modal"
-            style={{
-              position: "absolute",
-              top: "1rem",
-              right: "1rem",
-              background: "rgba(0, 0, 0, 0.3)",
-              border: "none",
-              color: "white",
-              width: "36px",
-              height: "36px",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0, 0, 0, 0.5)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0, 0, 0, 0.3)")}
+            className="w-9 h-9 rounded-full bg-black/25 hover:bg-black/40 text-white flex items-center justify-center transition-colors cursor-pointer"
           >
-            <X size={20} />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div style={{ padding: "0 2rem 2rem", marginTop: "-50px" }}>
-          {/* Avatar & Key Meta */}
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "1rem" }}>
-            <div style={{ position: "relative" }}>
+        {/* Modal Content */}
+        <div className="px-6 sm:px-8 pb-8 -mt-14">
+          {/* Avatar & Badges Header */}
+          <div className="flex items-end justify-between flex-wrap gap-4 mb-4">
+            <div className="relative">
               <div
+                className="w-24 h-24 rounded-full border-4 border-white flex items-center justify-center text-white font-black text-2xl shadow-xl"
                 style={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                  background: `linear-gradient(135deg, ${member.avatarColor || "#06A3EC"}bb, ${member.avatarColor || "#06A3EC"})`,
-                  border: "4px solid #ffffff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white",
-                  fontWeight: 800,
-                  fontSize: "2rem",
-                  boxShadow: "0 8px 16px rgba(0,0,0,0.12)",
+                  background: `linear-gradient(135deg, ${member.avatarColor || "#06A3EC"}dd, ${member.avatarColor || "#06A3EC"})`,
                 }}
               >
                 {member.initials}
               </div>
               {member.verified && (
                 <div
-                  style={{
-                    position: "absolute",
-                    bottom: 2,
-                    right: 2,
-                    background: "#ffffff",
-                    borderRadius: "50%",
-                    padding: "2px",
-                    display: "flex",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                  }}
+                  className="absolute bottom-1 right-1 bg-white rounded-full p-0.5 shadow-md"
                   title="Verified Alumni Member"
                 >
-                  <BadgeCheck size={24} color="#06A3EC" fill="#06A3EC" stroke="#ffffff" />
+                  <BadgeCheck className="w-6 h-6 text-sky-500 fill-sky-500 stroke-white" />
                 </div>
               )}
             </div>
 
-            <div style={{ display: "flex", gap: "0.5rem" }}>
+            <div className="flex items-center gap-2">
               <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.35rem",
-                  padding: "0.35rem 0.85rem",
-                  borderRadius: "9999px",
-                  background: member.membership === "Life Member" ? "rgba(250,228,6,0.18)" : "rgba(6,163,236,0.1)",
-                  color: member.membership === "Life Member" ? "#854d0e" : "var(--primary-dark)",
-                  fontWeight: 700,
-                  fontSize: "0.75rem",
-                }}
+                className={`inline-flex items-center gap-1 px-3 py-1 rounded-full font-bold text-xs ${
+                  member.membership === "Life Member"
+                    ? "bg-amber-100/80 text-amber-900 border border-amber-300"
+                    : "bg-sky-100 text-sky-700 border border-sky-200"
+                }`}
               >
-                <Award size={13} />
+                <Award className="w-3.5 h-3.5" />
                 {member.membership}
               </span>
+
               {member.bloodGroup && (
                 <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.25rem",
-                    padding: "0.35rem 0.75rem",
-                    borderRadius: "9999px",
-                    background: "rgba(220,38,38,0.1)",
-                    color: "#dc2626",
-                    fontWeight: 700,
-                    fontSize: "0.75rem",
-                  }}
+                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-50 text-red-600 border border-red-200 font-bold text-xs"
                   title={`Blood Donor: ${member.bloodGroup}`}
                 >
-                  <Droplets size={12} fill="#dc2626" />
+                  <Droplets className="w-3 h-3 fill-red-500" />
                   {member.bloodGroup}
                 </span>
               )}
             </div>
           </div>
 
-          {/* Member Name & Subtitles */}
-          <div style={{ marginBottom: "1.5rem" }}>
-            <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--text)", marginBottom: "0.25rem" }}>
+          {/* Member Name & Details */}
+          <div className="mb-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
               {member.name}
             </h2>
-            <p style={{ fontSize: "0.95rem", color: "var(--primary)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.35rem" }}>
-              <GraduationCap size={16} /> Batch: {member.batch}
+            <p className="text-sm sm:text-base font-bold text-sky-600 flex items-center gap-1.5 mt-1">
+              <GraduationCap className="w-4 h-4" /> Batch: {member.batch}
             </p>
-            <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Briefcase size={15} /> {member.profession} · <MapPin size={15} /> {member.location}, {member.country}
+            <p className="text-xs sm:text-sm text-slate-500 font-medium flex items-center gap-1.5 mt-1">
+              <Briefcase className="w-4 h-4" /> {member.profession} · <MapPin className="w-4 h-4" /> {member.location}, {member.country}
             </p>
           </div>
 
           {/* Info Cards Grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "0.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
             {member.education && (
-              <div style={{ background: "var(--background)", padding: "0.85rem 1rem", borderRadius: "0.75rem", border: "1px solid var(--border)" }}>
-                <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.25rem", display: "flex", alignItems: "center", gap: "0.35rem" }}>
-                  <Building size={13} /> Higher Education
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <Building className="w-3.5 h-3.5 text-sky-500" /> Education
                 </div>
-                <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--text)" }}>{member.education}</div>
+                <div className="text-sm font-bold text-slate-800">{member.education}</div>
               </div>
             )}
-            <div style={{ background: "var(--background)", padding: "0.85rem 1rem", borderRadius: "0.75rem", border: "1px solid var(--border)" }}>
-              <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.25rem", display: "flex", alignItems: "center", gap: "0.35rem" }}>
-                <Calendar size={13} /> Community Status
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-sky-500" /> Verification Status
               </div>
-              <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--text)" }}>
+              <div className="text-sm font-bold text-slate-800">
                 {member.verified ? "Verified Alumnus" : "Active Member"}
               </div>
             </div>
           </div>
 
           {/* Biography */}
-          <div style={{ marginBottom: "1.75rem" }}>
-            <h4 style={{ fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--text-muted)", marginBottom: "0.5rem" }}>
-              About
+          <div className="mb-6">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+              About Alumni
             </h4>
-            <p style={{ fontSize: "0.925rem", color: "var(--text)", lineHeight: 1.7, background: "rgba(6,163,236,0.03)", padding: "1rem", borderRadius: "0.75rem", border: "1px solid var(--border)" }}>
-              {member.bio || "Proud alumnus of Adarsha High School, Kaitola committed to community development, youth mentorship, and student welfare."}
+            <p className="text-sm text-slate-700 leading-relaxed bg-sky-50/50 p-4 rounded-xl border border-sky-100">
+              {member.bio || "Proud alumnus of Adarsha High School, Kaitola committed to community development, student welfare, and youth mentorship."}
             </p>
           </div>
 
           {/* Social Links & Interactive Actions */}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem", paddingTop: "1rem", borderTop: "1px solid var(--border)" }}>
-            <div style={{ display: "flex", gap: "0.6rem" }}>
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
+            <div className="flex items-center gap-2">
               {member.social?.linkedin && (
                 <a
                   href={member.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.4rem",
-                    padding: "0.5rem 0.85rem",
-                    borderRadius: "0.5rem",
-                    background: "#0a66c2",
-                    color: "white",
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                  }}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#0a66c2] hover:bg-[#084e96] text-white text-xs font-bold transition-colors"
                 >
-                  <FaLinkedin size={14} /> LinkedIn
+                  <FaLinkedin className="w-3.5 h-3.5" /> LinkedIn
                 </a>
               )}
               {member.social?.facebook && (
@@ -272,73 +174,37 @@ export default function MemberModal({ member, onClose }) {
                   href={member.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.4rem",
-                    padding: "0.5rem 0.85rem",
-                    borderRadius: "0.5rem",
-                    background: "#1877f2",
-                    color: "white",
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                  }}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#1877f2] hover:bg-[#1464cc] text-white text-xs font-bold transition-colors"
                 >
-                  <FaFacebook size={14} /> Facebook
+                  <FaFacebook className="w-3.5 h-3.5" /> Facebook
                 </a>
               )}
               <button
                 onClick={handleShare}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  padding: "0.5rem 0.85rem",
-                  borderRadius: "0.5rem",
-                  background: "var(--background)",
-                  border: "1px solid var(--border)",
-                  color: "var(--text)",
-                  fontSize: "0.8rem",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
               >
-                <Share2 size={14} /> {copied ? "Copied!" : "Share"}
+                <Share2 className="w-3.5 h-3.5" /> {copied ? "Copied!" : "Share"}
               </button>
             </div>
 
             <button
               onClick={() => setShowContactForm(!showContactForm)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.55rem 1.25rem",
-                borderRadius: "0.5rem",
-                background: "var(--primary)",
-                color: "white",
-                border: "none",
-                fontWeight: 700,
-                fontSize: "0.85rem",
-                cursor: "pointer",
-                transition: "background 0.2s",
-              }}
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-sky-500/20 transition-all cursor-pointer"
             >
-              <MessageSquare size={14} />
+              <MessageSquare className="w-4 h-4" />
               {showContactForm ? "Cancel" : "Connect"}
             </button>
           </div>
 
-          {/* Quick Connect / Message Form */}
+          {/* Connect Form Drawer */}
           {showContactForm && (
-            <div style={{ marginTop: "1.25rem", padding: "1.25rem", background: "var(--background)", borderRadius: "0.75rem", border: "1px solid var(--border)", animation: "fadeIn 0.2s ease" }}>
-              <h5 style={{ fontWeight: 700, fontSize: "0.875rem", marginBottom: "0.5rem", color: "var(--text)" }}>
-                Send a message to {member.name}
+            <div className="mt-4 p-4 bg-slate-50 rounded-xl border border-slate-200 animate-fadeIn">
+              <h5 className="font-bold text-sm text-slate-800 mb-2">
+                Send a direct message to {member.name}
               </h5>
               {messageSent ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--success)", fontSize: "0.875rem", fontWeight: 600, padding: "0.5rem 0" }}>
-                  <CheckCircle size={18} /> Message request sent successfully!
+                <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm py-2">
+                  <CheckCircle className="w-4 h-4" /> Message sent successfully!
                 </div>
               ) : (
                 <form onSubmit={handleSendMessage}>
@@ -348,31 +214,12 @@ export default function MemberModal({ member, onClose }) {
                     value={messageText}
                     onChange={(e) => setMessageText(e.target.value)}
                     required
-                    style={{
-                      width: "100%",
-                      padding: "0.6rem 0.75rem",
-                      borderRadius: "0.5rem",
-                      border: "1.5px solid var(--border)",
-                      background: "#ffffff",
-                      fontSize: "0.85rem",
-                      marginBottom: "0.75rem",
-                      outline: "none",
-                      fontFamily: "inherit",
-                    }}
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white text-sm outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 mb-3"
                   />
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <div className="flex justify-end">
                     <button
                       type="submit"
-                      style={{
-                        padding: "0.45rem 1rem",
-                        borderRadius: "0.5rem",
-                        background: "var(--primary)",
-                        color: "white",
-                        border: "none",
-                        fontWeight: 600,
-                        fontSize: "0.8rem",
-                        cursor: "pointer",
-                      }}
+                      className="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold transition-colors cursor-pointer"
                     >
                       Send Message
                     </button>

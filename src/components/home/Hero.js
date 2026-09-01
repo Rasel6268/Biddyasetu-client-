@@ -23,261 +23,96 @@ export default function Hero() {
   ];
 
   return (
-    <section
-      style={{
-        position: "relative",
-        minHeight: "92vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        overflow: "hidden",
-        background: "linear-gradient(145deg, #0284c7 0%, #06A3EC 45%, #0ea5e9 75%, #38bdf8 100%)",
-        color: "white",
-      }}
-    >
+    <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden bg-gradient-to-br from-sky-700 via-sky-500 to-sky-400 text-white">
       {/* Background Decorative Mesh & Patterns */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[15%] -right-[5%] w-[350px] sm:w-[500px] lg:w-[650px] h-[350px] sm:h-[500px] lg:h-[650px] rounded-full bg-radial from-white/15 to-transparent blur-3xl" />
+        <div className="absolute -bottom-[10%] -left-[5%] w-[250px] sm:w-[400px] lg:w-[500px] h-[250px] sm:h-[400px] lg:h-[500px] rounded-full bg-radial from-yellow-300/20 to-transparent blur-3xl" />
         <div
+          className="absolute inset-0 opacity-40"
           style={{
-            position: "absolute",
-            top: "-15%",
-            right: "-5%",
-            width: "clamp(350px, 45vw, 650px)",
-            height: "clamp(350px, 45vw, 650px)",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-10%",
-            left: "-5%",
-            width: "clamp(250px, 35vw, 500px)",
-            height: "clamp(250px, 35vw, 500px)",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(250,228,6,0.18) 0%, transparent 70%)",
-            filter: "blur(50px)",
-          }}
-        />
-        {/* Subtle geometric dot grid pattern */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)",
             backgroundSize: "28px 28px",
-            opacity: 0.6,
           }}
         />
       </div>
 
       {/* Main Container */}
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "5rem 1.5rem 3rem",
-          width: "100%",
-          position: "relative",
-          zIndex: 10,
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "3.5rem",
-            alignItems: "center",
-          }}
-        >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Text & CTAs */}
-          <div style={{ maxWidth: "640px" }}>
+          <div className="lg:col-span-7 max-w-2xl">
             {/* School & Est. Badge */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.4rem 1rem",
-                borderRadius: "9999px",
-                background: "rgba(255, 255, 255, 0.16)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                color: "#ffffff",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                marginBottom: "1.5rem",
-                backdropFilter: "blur(10px)",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-              }}
-            >
-              <GraduationCap size={15} color="#fde047" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md shadow-sm">
+              <GraduationCap className="w-4 h-4 text-yellow-300" />
               <span>Adarsha High School, Kaitola · Est. 2026</span>
             </div>
 
             {/* Title / Bengali Name */}
-            <h1
-              style={{
-                fontSize: "clamp(2.75rem, 6.5vw, 4.75rem)",
-                fontWeight: 900,
-                lineHeight: 1.05,
-                marginBottom: "0.25rem",
-                letterSpacing: "-0.02em",
-                textShadow: "0 4px 24px rgba(0,0,0,0.15)",
-              }}
-            >
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-none mb-2 tracking-tight drop-shadow-sm">
               বিদ্যাসেতু
             </h1>
-            <h2
-              style={{
-                fontSize: "clamp(1.25rem, 2.5vw, 1.85rem)",
-                fontWeight: 600,
-                color: "rgba(255, 255, 255, 0.92)",
-                marginBottom: "1.25rem",
-                letterSpacing: "-0.01em",
-              }}
-            >
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white/90 mb-5 tracking-tight">
               Biddyasetu Alumni Organization
             </h2>
 
             {/* Tagline / Mission */}
-            <p
-              style={{
-                fontSize: "clamp(1rem, 2vw, 1.15rem)",
-                color: "rgba(255, 255, 255, 0.95)",
-                lineHeight: 1.65,
-                marginBottom: "2rem",
-                textShadow: "0 2px 8px rgba(0,0,0,0.1)",
-              }}
-            >
+            <p className="text-base sm:text-lg text-white/95 leading-relaxed mb-6 font-medium">
               "{orgInfo.tagline}"
             </p>
 
             {/* Identity Badges */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "2.25rem" }}>
+            <div className="flex flex-wrap gap-2 mb-8">
               {["Non-Political", "Non-Profit", "Non-Communal", "Voluntary"].map((t) => (
                 <span
                   key={t}
-                  style={{
-                    padding: "0.25rem 0.75rem",
-                    borderRadius: "9999px",
-                    background: "rgba(255,255,255,0.14)",
-                    border: "1px solid rgba(255,255,255,0.22)",
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    backdropFilter: "blur(6px)",
-                  }}
+                  className="px-3 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-semibold backdrop-blur-sm"
                 >
                   {t}
                 </span>
               ))}
             </div>
 
-            {/* CTA Buttons */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}>
+            {/* CTA Action Buttons */}
+            <div className="flex flex-wrap gap-3.5">
               <Link
                 href="/membership"
-                className="hero-btn-primary"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.85rem 1.75rem",
-                  borderRadius: "9999px",
-                  background: "#ffffff",
-                  color: "#0369a1",
-                  fontWeight: 800,
-                  fontSize: "0.95rem",
-                  textDecoration: "none",
-                  boxShadow: "0 10px 25px -5px rgba(0,0,0,0.2)",
-                }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-sky-700 font-extrabold text-sm sm:text-base shadow-xl shadow-sky-950/20 hover:shadow-2xl hover:scale-105 transition-all"
               >
-                <Users size={17} /> Become a Member
+                <Users className="w-4 h-4" /> Become a Member
               </Link>
               <Link
                 href="/contact#donate"
-                className="hero-btn-secondary"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.85rem 1.75rem",
-                  borderRadius: "9999px",
-                  background: "rgba(250, 228, 6, 0.95)",
-                  color: "#1e293b",
-                  fontWeight: 800,
-                  fontSize: "0.95rem",
-                  textDecoration: "none",
-                  boxShadow: "0 10px 25px -5px rgba(250,228,6,0.3)",
-                }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-extrabold text-sm sm:text-base shadow-xl shadow-yellow-500/30 hover:scale-105 transition-all"
               >
-                <Heart size={17} /> Donate Fund
+                <Heart className="w-4 h-4 fill-slate-900" /> Donate Fund
               </Link>
               <Link
                 href="/members"
-                className="hero-btn-outline"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.85rem 1.5rem",
-                  borderRadius: "9999px",
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1.5px solid rgba(255,255,255,0.35)",
-                  color: "#ffffff",
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  textDecoration: "none",
-                  backdropFilter: "blur(8px)",
-                }}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/35 text-white font-bold text-sm sm:text-base backdrop-blur-md transition-all"
               >
-                <BookOpen size={17} /> Explore Directory
+                <BookOpen className="w-4 h-4" /> Directory
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Modern Glass Stats & Quick Feature Cards */}
-          <div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1.25rem",
-                maxWidth: "520px",
-                margin: "0 auto",
-              }}
-            >
+          {/* Right Column: Modern Glass Stats Cards */}
+          <div className="lg:col-span-5">
+            <div className="grid grid-cols-2 gap-4 max-w-md mx-auto lg:max-w-none">
               {stats.map((st) => {
                 const Icon = st.icon;
                 return (
-                  <div key={st.label} className="hero-stat-card">
-                    <div
-                      style={{
-                        width: "44px",
-                        height: "44px",
-                        borderRadius: "50%",
-                        background: "rgba(255, 255, 255, 0.2)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 0.75rem",
-                      }}
-                    >
-                      <Icon size={22} color="#ffffff" />
+                  <div
+                    key={st.label}
+                    className="p-6 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/30 text-center shadow-lg shadow-sky-950/10 hover:bg-white/20 hover:-translate-y-1.5 transition-all duration-300"
+                  >
+                    <div className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
+                      <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <div style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", fontWeight: 900, lineHeight: 1, marginBottom: "0.35rem" }}>
+                    <div className="text-3xl sm:text-4xl font-black leading-none mb-1 text-white">
                       {st.value}
                     </div>
-                    <div
-                      style={{
-                        fontSize: "0.8125rem",
-                        color: "rgba(255, 255, 255, 0.85)",
-                        fontWeight: 600,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.04em",
-                      }}
-                    >
+                    <div className="text-xs font-bold text-white/85 uppercase tracking-wider">
                       {st.label}
                     </div>
                   </div>
@@ -289,9 +124,9 @@ export default function Hero() {
       </div>
 
       {/* Bottom Scroll Indicator */}
-      <div style={{ textAlign: "center", paddingBottom: "1.5rem", position: "relative", zIndex: 10 }}>
-        <div style={{ animation: "bounce 2s infinite", display: "inline-block", opacity: 0.75 }}>
-          <ChevronDown size={24} color="#ffffff" />
+      <div className="text-center pb-6 relative z-10">
+        <div className="inline-block animate-bounce opacity-80">
+          <ChevronDown className="w-6 h-6 text-white" />
         </div>
       </div>
     </section>
