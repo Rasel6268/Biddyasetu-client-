@@ -57,7 +57,7 @@ export default function Navbar() {
 
               {/* Logo container with premium border */}
               <div className="relative rounded-xl  p-1  group-hover:shadow-sky-500/30 transition-all duration-500">
-                <div className="rounded-lg overflow-hidden p-1">
+                <div className="rounded-lg overflow-hidden">
                   <Image
                     src="/logo.png"
                     alt="Biddyasetu Logo"
